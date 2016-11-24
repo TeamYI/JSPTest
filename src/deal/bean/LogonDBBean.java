@@ -68,13 +68,13 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			
-			pstmt = conn.prepareStatement("select passwd from member where id = ?") ;
+			pstmt = conn.prepareStatement("select passwd from users where id = ?") ;
 			pstmt.setString(1,id) ;
 			rs=pstmt.executeQuery() ;
 			
 			if(rs.next()){
 				String dbpasswd = rs.getString("passwd");
-				if(passwd == dbpasswd ){
+				if(passwd.equals(dbpasswd)){
 					return i = 1  ;
 				}else{
 					return i ;

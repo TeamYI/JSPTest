@@ -11,8 +11,10 @@
 </head>
 <body>
 <header>
-	<li><a href="login.do">SING IN</a></li>
-	<li><a href="membership.do">SING UP</a></li>
+	<c:if test="${sessionScope.id == null }" >
+		<li><a href="login.do">SING IN</a></li>
+		<li><a href="membership.do">SING UP</a></li>
+	</c:if>
 	<c:if test="${sessionScope.id != null }">
 		${id}님 환영합니다.
 		<li><a href="login.do?command=logout">Logout</a></li>

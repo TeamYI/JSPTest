@@ -135,6 +135,7 @@ public class Controller extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	
 		request.setAttribute("cont", view);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/layout.jsp") ;

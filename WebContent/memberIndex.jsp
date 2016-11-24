@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-fffff
+바보
 </body>
 </html>

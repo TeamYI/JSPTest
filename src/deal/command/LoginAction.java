@@ -22,7 +22,6 @@ public class LoginAction implements CommandAction {
 		int check = member.userCheck(id,pw) ;
 		
 		
-		
 		String command = request.getParameter("command") ;
 		if(command != null && command.equals("logout")){
 			session.invalidate();
@@ -35,10 +34,12 @@ public class LoginAction implements CommandAction {
 			return "/adminIndex.jsp" ;
 		}if(check == 1){
 			session.setAttribute("id", id);
-			return "/memberIndex.jsp" ;
+			request.setAttribute("check", check);
+			System.out.println("sksskskskkjkjds");
+			return "/memberIndex.jsp"; 
 		}
 		else{
-			session.removeAttribute("admin");
+			session.removeAttribute("id");
 			request.setAttribute("error", "notMatch");
 			return "/loginForm.jsp" ;
 		}
