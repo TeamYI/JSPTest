@@ -16,13 +16,14 @@
 		PASSWD<input  id="pw" type="password" name="pw">
 		<button id="loginButton">LOGIN</button>
 	</div>
+	-->
 	<form action="login.do" method="post">
 		ID<input name="id" type="text">
 		PASSWD<input name="pw" type="password">
 		<input type="submit" value="send">
 	</form>
 	
-	-->
+
 
 </body>
 </html>

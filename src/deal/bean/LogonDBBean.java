@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -29,7 +30,7 @@ public class LogonDBBean {
 	return ds.getConnection();
 	}
 
-	// È¸¿ø DB Å×ÀÌºí¿¡ È¸¿ø insert
+	// È¸ï¿½ï¿½ DB ï¿½ï¿½ï¿½Ìºï¿½ È¸ï¿½ï¿½ insert
 	public void insertUser(LogonDataBean users) {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -88,8 +89,7 @@ public class LogonDBBean {
 		return i;
 		
 	}
-
-	// ¾ÆÀÌµğ Áßº¹¿©ºÎ È®ÀÎ
+	//ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	public int confirmId(String id) {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -98,14 +98,14 @@ public class LogonDBBean {
 
 	try {
 		conn = getConnection();
-		pstmt = conn.prepareStatement("select id from member where id = ?");
+		pstmt = conn.prepareStatement("select id from users where id = ?");
 		pstmt.setString(1, id);
 		rs = pstmt.executeQuery();
 
 		if (rs.next()) {
-			x = 1; // id Áßº¹
+			x = 1; // idê°€ ìˆìŒ
 		} else {
-			x = -1; // id Áßº¹x
+			x = -1; // idê°€ ì—†ìŒ
 		}
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -128,5 +128,26 @@ public class LogonDBBean {
 			}
 	}
 	return x;
+	}
+
+	
+	public ArrayList<LogonDataBean> usersView() throws Exception {
+		Connection			conn	=	null;
+		PreparedStatement	pstmt	=	null;
+		ResultSet			rs		=	null;
+		
+		conn	=	getConnection();
+		pstmt	=	conn.prepareStatement("select * from users");
+		rs		=	pstmt.executeQuery();
+		
+		ArrayList<LogonDataBean>	result	=	new	ArrayList<LogonDataBean>();
+		
+		while(rs.next()) {
+			LogonDataBean	data	=	new	LogonDataBean();
+			data.setId(rs.getString("id"));
+			data.setPasswd(rs.getString("passwd"));
+			result.add(data);
+		}
+		return	result;
 	}
 }

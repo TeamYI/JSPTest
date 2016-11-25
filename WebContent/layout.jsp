@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 	
 </header>
 <section>
-	<c:if test="${cont !=null }">
+	<c:if test="${cont != null }">
 		<jsp:include page="${cont}"></jsp:include>
 	</c:if>
 </section>

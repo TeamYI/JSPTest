@@ -15,6 +15,9 @@ public class MemberShipAction implements CommandAction {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw") ;
 		
+		System.out.println(id) ;
+		System.out.println(pw) ;
+		
 		if(id == null || pw == null){
 			return "/membershipForm.jsp" ;
 		}else{
