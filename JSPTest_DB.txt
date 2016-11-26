@@ -1,0 +1,14 @@
+<제품 테이블>
+create table goods (
+goodsId int not null auto_increment,
+goodsName varchar(30) not null,
+imageFile varchar(60) not null,
+explanation varchar(100) not null,
+auctionPrice int(10) not null,
+goodsDate varchar(15) not null,
+primary key (goodsId));
+
+<회원 테이블>
+create table users (
+id varchar(30) not null primary key,
+passwd varchar(30) not null);
